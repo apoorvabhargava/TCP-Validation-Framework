@@ -32,7 +32,6 @@
 #include "ns3/traffic-control-module.h"
 #include "ns3/log.h"
 #include "ns3/random-variable-stream.h"
-#include "ns3/gtk-config-store.h"
 #include "ns3/flow-monitor-module.h"
 #include "ns3/callback.h"
 #include "ns3/dce-module.h"
@@ -460,9 +459,6 @@ int main (int argc, char *argv[])
       ns3InstallBulkSend (leftNodes.Get (3), routerToRightIPAddress [3].GetAddress (1), port, 5, 0, MakeCallback (&CwndChangeD));
       ns3InstallBulkSend (leftNodes.Get (4), routerToRightIPAddress [4].GetAddress (1), port, 6, 0, MakeCallback (&CwndChangeE));
     }
-
-//  GtkConfigStore gcs;
-//  gcs.ConfigureAttributes ();
 
   // Calls function to run ss command on Linux stack after every 0.05 seconds
   if (stack == "linux")
