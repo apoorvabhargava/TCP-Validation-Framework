@@ -47,7 +47,7 @@ LinuxCheckQueueSize (Ptr<QueueDisc> queue)
 {
   uint32_t qSize = queue->GetCurrentSize ().GetValue ();
 
-  // check queue size every 1/100 of a second
+  // Check queue size in Linux stack every 1/100 of a second
   Simulator::Schedule (Seconds (0.001), &LinuxCheckQueueSize, queue);
   std::ofstream fPlotQueue (std::stringstream (dir + "linux-queue-size.plotme").str ().c_str (), std::ios::out | std::ios::app);
   fPlotQueue << Simulator::Now ().GetSeconds () << " " << qSize << std::endl;
@@ -59,7 +59,7 @@ ns3CheckQueueSize (Ptr<QueueDisc> queue)
 {
   uint32_t qSize = queue->GetCurrentSize ().GetValue ();
 
-  // check queue size every 1/100 of a second
+  // check queue size in ns-3 stack every 1/100 of a second
   Simulator::Schedule (Seconds (0.001), &ns3CheckQueueSize, queue);
   std::ofstream fPlotQueue (std::stringstream (dir + "ns3-queue-size.plotme").str ().c_str (), std::ios::out | std::ios::app);
   fPlotQueue << Simulator::Now ().GetSeconds () << " " << qSize << std::endl;
@@ -180,7 +180,7 @@ int main (int argc, char *argv[])
   uint32_t dataSize = 1446;
   uint32_t delAckCount = 2;
 
-  //Enable checksum if linux and ns3 node communicate 
+  // Enable checksum if Linux and ns-3 node communicate 
   GlobalValue::Bind ("ChecksumEnabled", BooleanValue (true));
 
   time_t rawtime;
@@ -219,7 +219,7 @@ int main (int argc, char *argv[])
   TypeId qdTid;
   NS_ABORT_MSG_UNLESS (TypeId::LookupByNameFailSafe (queue_disc_type, &qdTid), "TypeId " << queue_disc_type << " not found");
 
-  // Enables PRR in ns-3 and sets the TCP in ns-3
+  // Enables PRR and sets TCP variant in ns-3
   if (stack == "ns3")
     {
       Config::SetDefault ("ns3::TcpL4Protocol::RecoveryType", TypeIdValue (TypeId::LookupByName ("ns3::TcpPrrRecovery")));
@@ -298,7 +298,7 @@ int main (int argc, char *argv[])
       internetStack.InstallAll (); 
     }
 
-  // Assign ip addresses to all the net devices
+  // Assign IP addresses to all the network devices
   Ipv4AddressHelper ipAddresses ("10.0.0.0", "255.255.255.0");
 
   Ipv4InterfaceContainer r1r2IPAddress = ipAddresses.Assign (r1r2ND);        ipAddresses.NewNetwork ();
@@ -321,7 +321,7 @@ int main (int argc, char *argv[])
   dceManager.Install (rightNodes);
   dceManager.Install (routers);
   
-  // Set configuration for linux stack and create routing table for each node
+  // Set configuration for Linux stack and create routing table for each node
   if (stack=="linux")
     {
       linuxStack.SysctlSet (leftNodes, ".net.ipv4.conf.default.forwarding", "1");
@@ -335,7 +335,7 @@ int main (int argc, char *argv[])
       linuxStack.SysctlSet (leftNodes, ".net.ipv4.tcp_dsack", "0");
       linuxStack.SysctlSet (rightNodes, ".net.ipv4.tcp_dsack", "0");
 
-      //Static Routing
+      // Static Routing
       Ptr<Ipv4> ipv4Router1 = routers.Get (0)->GetObject<Ipv4> ();
       Ptr<Ipv4> ipv4Router2 = routers.Get (1)->GetObject<Ipv4> ();
 
@@ -344,14 +344,14 @@ int main (int argc, char *argv[])
       Ptr<Ipv4StaticRouting> staticRoutingRouter1 = routingHelper.GetStaticRouting (ipv4Router1);
       Ptr<Ipv4StaticRouting> staticRoutingRouter2 = routingHelper.GetStaticRouting (ipv4Router2);
 
-      //Routing for Router 1
+      // Routing for Router 1
       staticRoutingRouter1->AddNetworkRouteTo (Ipv4Address ("10.0.6.0"), Ipv4Mask ("255.255.255.0"), Ipv4Address ("10.0.0.2"), 1);
       staticRoutingRouter1->AddNetworkRouteTo (Ipv4Address ("10.0.7.0"), Ipv4Mask ("255.255.255.0"), Ipv4Address ("10.0.0.2"), 1);
       staticRoutingRouter1->AddNetworkRouteTo (Ipv4Address ("10.0.8.0"), Ipv4Mask ("255.255.255.0"), Ipv4Address ("10.0.0.2"), 1);
       staticRoutingRouter1->AddNetworkRouteTo (Ipv4Address ("10.0.9.0"), Ipv4Mask ("255.255.255.0"), Ipv4Address ("10.0.0.2"), 1);
       staticRoutingRouter1->AddNetworkRouteTo (Ipv4Address ("10.0.10.0"), Ipv4Mask ("255.255.255.0"), Ipv4Address ("10.0.0.2"), 1);
 
-      //Routing for Router 2
+      // Routing for Router 2
       staticRoutingRouter2->AddNetworkRouteTo (Ipv4Address ("10.0.1.0"), Ipv4Mask ("255.255.255.0"), Ipv4Address ("10.0.0.1"), 1);
       staticRoutingRouter2->AddNetworkRouteTo (Ipv4Address ("10.0.2.0"), Ipv4Mask ("255.255.255.0"), Ipv4Address ("10.0.0.1"), 1);
       staticRoutingRouter2->AddNetworkRouteTo (Ipv4Address ("10.0.3.0"), Ipv4Mask ("255.255.255.0"), Ipv4Address ("10.0.0.1"), 1);
@@ -360,7 +360,7 @@ int main (int argc, char *argv[])
 
       std::ostringstream cmd_oss;
 
-      //Default route for senders
+      // Default route for senders
       for(uint32_t i=1; i<6; i = i+1)
         {
            cmd_oss.str ("");
@@ -369,7 +369,7 @@ int main (int argc, char *argv[])
            LinuxStackHelper::RunIp (leftNodes.Get (i-1), Seconds (0.00001), "link set sim0 up");
         }
 
-      //Default route for receivers
+      // Default route for receivers
       for(uint32_t i=1; i<6; i = i+1)
         {
            cmd_oss.str ("");
@@ -382,7 +382,7 @@ int main (int argc, char *argv[])
       { 
         Ipv4GlobalRoutingHelper::PopulateRoutingTables ();
 
-        //Set default parameters for TCP in ns-3
+        // Set default parameters for TCP in ns-3
         Config::SetDefault ("ns3::TcpSocket::SndBufSize", UintegerValue (1 << 20));
         Config::SetDefault ("ns3::TcpSocket::RcvBufSize", UintegerValue (1 << 20));
         Config::SetDefault ("ns3::TcpSocket::InitialCwnd", UintegerValue (10));
@@ -391,20 +391,20 @@ int main (int argc, char *argv[])
         Config::SetDefault ("ns3::TcpSocketBase::Sack", BooleanValue (isSack));
       }
 
-  //Creates directories to store various plotme files
+  // Creates directories to store plotme files
   dir += (currentTime + "/");
   std::string dirToSave = "mkdir -p " + dir;
   system (dirToSave.c_str ());
   system ((dirToSave + "/pcap/").c_str ());
   system ((dirToSave + "/queueTraces/").c_str ());
 
-  // Set default parameters for queue disc
+  // Set default parameters for queue discipline
   Config::SetDefault (queue_disc_type + "::MaxSize", QueueSizeValue (QueueSize ("666p")));
 
   AsciiTraceHelper asciiTraceHelper;
   Ptr<OutputStreamWrapper> streamWrapper;
 
-  // Install queue disc on router
+  // Install queue discipline on router
   TrafficControlHelper tch;
   tch.SetRootQueueDisc (queue_disc_type);
   QueueDiscContainer qd;
@@ -433,7 +433,7 @@ int main (int argc, char *argv[])
   InstallPacketSink (rightNodes.Get (3), port, sock_factory);      // D Sink 0 Applications
   InstallPacketSink (rightNodes.Get (4), port, sock_factory);      // E Sink 0 Applications
 
-  //Install BuulkSend application
+  // Install BulkSend application
   if (stack == "linux")
     {
       InstallBulkSend (leftNodes.Get (0), routerToRightIPAddress [0].GetAddress (1), port, sock_factory);
@@ -454,7 +454,7 @@ int main (int argc, char *argv[])
 //  GtkConfigStore gcs;
 //  gcs.ConfigureAttributes ();
 
-  // Calls function to run ss command on linux stack after every 0.05 seconds
+  // Calls function to run ss command on Linux stack after every 0.05 seconds
   if (stack=="linux")
     {
       for (int j=0; j<leftNodes.GetN (); j++)
@@ -466,13 +466,13 @@ int main (int argc, char *argv[])
        }
     }
 
-  //Enables pcap on all the interfaces
+  // Enables PCAP on all the point to point interfaces
   pointToPointLeaf.EnablePcapAll (dir + "pcap/N", true);
 
   Simulator::Stop (Seconds (stopTime));
   Simulator::Run ();
 
-  // Store queue stats in a file
+  // Stores queue stats in a file
   std::ofstream myfile;
   myfile.open (dir + "queueStats.txt", std::fstream::in | std::fstream::out | std::fstream::app);
   myfile << std::endl;
