@@ -41,6 +41,7 @@ Ptr<UniformRandomVariable> uv = CreateObject<UniformRandomVariable> ();
 std::string dir = "results/dumbbell-topology/";
 double stopTime = 20;
 
+// Functions to check queue length of Router 1
 void
 LinuxCheckQueueSize (Ptr<QueueDisc> queue)
 {
@@ -65,6 +66,7 @@ ns3CheckQueueSize (Ptr<QueueDisc> queue)
   fPlotQueue.close ();
 }
 
+// Functions to trace change in cwnd for all the senders
 static void
 CwndChangeA (uint32_t oldCwnd, uint32_t newCwnd)
 {
@@ -105,12 +107,14 @@ CwndChangeE (uint32_t oldCwnd, uint32_t newCwnd)
   fPlotQueue.close ();
 }
 
+// Function to calculate drops in a particular Queue
 static void
 DropAtQueue (Ptr<OutputStreamWrapper> stream, Ptr<const QueueDiscItem> item)
 {
   *stream->GetStream () << Simulator::Now ().GetSeconds () << " 1" << std::endl;
 }
 
+// Trace Function for cwnd
 void
 TraceCwnd (uint32_t node, uint32_t cwndWindow,
            Callback <void, uint32_t, uint32_t> CwndTrace)
@@ -118,6 +122,7 @@ TraceCwnd (uint32_t node, uint32_t cwndWindow,
   Config::ConnectWithoutContext ("/NodeList/" + std::to_string (node) + "/$ns3::TcpL4Protocol/SocketList/" + std::to_string (cwndWindow) + "/CongestionWindow", CwndTrace);
 }
 
+// Function to install BulkSend application
 void InstallBulkSend (Ptr<Node> node, Ipv4Address address, uint16_t port, std::string sock_factory,
                       uint32_t nodeId, uint32_t cwndWindow,
                       Callback <void, uint32_t, uint32_t> CwndTrace)
@@ -141,6 +146,7 @@ void InstallBulkSend (Ptr<Node> node, Ipv4Address address, uint16_t port, std::s
   sourceApps.Stop (Seconds (stopTime));
 }
 
+// Function to install sink application
 void InstallPacketSink (Ptr<Node> node, uint16_t port, std::string sock_factory)
 {
   PacketSinkHelper sink (sock_factory, InetSocketAddress (Ipv4Address::GetAny (), port));
@@ -149,6 +155,7 @@ void InstallPacketSink (Ptr<Node> node, uint16_t port, std::string sock_factory)
   sinkApps.Stop (Seconds (stopTime));
 }
 
+// Function to run "ss -a -e -i" command on a particular node having Linux stack
 static void GetSSStats (Ptr<Node> node, Time at, std::string stack)
 {
   if (stack == "linux")
