@@ -118,13 +118,11 @@ TraceCwnd (uint32_t node, uint32_t cwndWindow,
   Config::ConnectWithoutContext ("/NodeList/" + std::to_string (node) + "/$ns3::TcpL4Protocol/SocketList/" + std::to_string (cwndWindow) + "/CongestionWindow", CwndTrace);
 }
 
-void ns3InstallBulkSend (Ptr<Node> node, Ipv4Address address, uint16_t port,
-                         uint32_t nodeId, uint32_t cwndWindow,
-                         Callback <void, uint32_t, uint32_t> CwndTrace)
+void InstallBulkSend (Ptr<Node> node, Ipv4Address address, uint16_t port, std::string sock_factory,
+                      uint32_t nodeId, uint32_t cwndWindow,
+                      Callback <void, uint32_t, uint32_t> CwndTrace)
 {
-  BulkSendHelper source ("ns3::TcpSocketFactory",
-                         InetSocketAddress (address, port));
-
+  BulkSendHelper source (sock_factory, InetSocketAddress (address, port));
   source.SetAttribute ("MaxBytes", UintegerValue (0));
   ApplicationContainer sourceApps = source.Install (node);
   Time timeToStart = Seconds (uv->GetValue (10, 11));
@@ -406,6 +404,10 @@ int main (int argc, char *argv[])
   system (dirToSave.c_str ());
   system ((dirToSave + "/pcap/").c_str ());
   system ((dirToSave + "/queueTraces/").c_str ());
+  if (stack == "ns3")
+    {
+      system ((dirToSave + "/cwndTraces/").c_str ());
+    }
 
   // Set default parameters for queue discipline
   Config::SetDefault (queue_disc_type + "::MaxSize", QueueSizeValue (QueueSize ("666p")));
@@ -453,11 +455,11 @@ int main (int argc, char *argv[])
     }
   else if (stack == "ns3")
     {
-      ns3InstallBulkSend (leftNodes.Get (0), routerToRightIPAddress [0].GetAddress (1), port, 2, 0, MakeCallback (&CwndChangeA));
-      ns3InstallBulkSend (leftNodes.Get (1), routerToRightIPAddress [1].GetAddress (1), port, 3, 0, MakeCallback (&CwndChangeB));
-      ns3InstallBulkSend (leftNodes.Get (2), routerToRightIPAddress [2].GetAddress (1), port, 4, 0, MakeCallback (&CwndChangeC));
-      ns3InstallBulkSend (leftNodes.Get (3), routerToRightIPAddress [3].GetAddress (1), port, 5, 0, MakeCallback (&CwndChangeD));
-      ns3InstallBulkSend (leftNodes.Get (4), routerToRightIPAddress [4].GetAddress (1), port, 6, 0, MakeCallback (&CwndChangeE));
+      InstallBulkSend (leftNodes.Get (0), routerToRightIPAddress [0].GetAddress (1), port, sock_factory, 2, 0, MakeCallback (&CwndChangeA));
+      InstallBulkSend (leftNodes.Get (1), routerToRightIPAddress [1].GetAddress (1), port, sock_factory, 3, 0, MakeCallback (&CwndChangeB));
+      InstallBulkSend (leftNodes.Get (2), routerToRightIPAddress [2].GetAddress (1), port, sock_factory, 4, 0, MakeCallback (&CwndChangeC));
+      InstallBulkSend (leftNodes.Get (3), routerToRightIPAddress [3].GetAddress (1), port, sock_factory, 5, 0, MakeCallback (&CwndChangeD));
+      InstallBulkSend (leftNodes.Get (4), routerToRightIPAddress [4].GetAddress (1), port, sock_factory, 6, 0, MakeCallback (&CwndChangeE));
     }
 
   // Calls function to run ss command on Linux stack after every 0.05 seconds
