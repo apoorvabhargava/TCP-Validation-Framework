@@ -210,6 +210,7 @@ int main (int argc, char *argv[])
   cmd.AddValue ("queue_disc_type", "Queue disc type for gateway (e.g. ns3::CoDelQueueDisc)", queue_disc_type);
   cmd.AddValue ("dataSize", "Data packet size", dataSize);
   cmd.AddValue ("delAckCount", "Delayed ack count", delAckCount);
+  cmd.AddValue ("Sack", "Flag to enable/disable sack in TCP", isSack);
   cmd.AddValue ("stopTime", "Stop time for applications / simulation time will be stopTime", stopTime);
   cmd.Parse (argc,argv);
 
