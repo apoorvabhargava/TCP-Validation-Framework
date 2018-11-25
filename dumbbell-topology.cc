@@ -339,14 +339,19 @@ int main (int argc, char *argv[])
   // Set configuration for Linux stack and create routing table for each node
   if (stack == "linux")
     {
+      // Enable IP forwarding in Linux stack
       linuxStack.SysctlSet (leftNodes, ".net.ipv4.conf.default.forwarding", "1");
       linuxStack.SysctlSet (rightNodes, ".net.ipv4.conf.default.forwarding", "1");
+      // Sets TCP Congestion Control algorithm in Linux stack
       linuxStack.SysctlSet (leftNodes, ".net.ipv4.tcp_congestion_control", linux_prot);
       linuxStack.SysctlSet (rightNodes, ".net.ipv4.tcp_congestion_control", linux_prot);
-      linuxStack.SysctlSet (leftNodes, ".net.ipv4.tcp_sack", "1");
-      linuxStack.SysctlSet (rightNodes, ".net.ipv4.tcp_sack", "1");
+      // Enable/Disable SACK in TCP at end hosts
+      linuxStack.SysctlSet (leftNodes, ".net.ipv4.tcp_sack", ((isSack) ? "1" : "0"));
+      linuxStack.SysctlSet (rightNodes, ".net.ipv4.tcp_sack", ((isSack) ? "1" : "0"));
+      // Disable FACK in TCP at end hosts
       linuxStack.SysctlSet (leftNodes, ".net.ipv4.tcp_fack", "0");
       linuxStack.SysctlSet (rightNodes, ".net.ipv4.tcp_fack", "0");
+      // Disable DSACK in TCP at end hosts
       linuxStack.SysctlSet (leftNodes, ".net.ipv4.tcp_dsack", "0");
       linuxStack.SysctlSet (rightNodes, ".net.ipv4.tcp_dsack", "0");
 
@@ -397,12 +402,16 @@ int main (int argc, char *argv[])
     {
       Ipv4GlobalRoutingHelper::PopulateRoutingTables ();
 
-      // Set default parameters for TCP in ns-3
+      // Sets default sender and receiver buffer size as 1MB
       Config::SetDefault ("ns3::TcpSocket::SndBufSize", UintegerValue (1 << 20));
       Config::SetDefault ("ns3::TcpSocket::RcvBufSize", UintegerValue (1 << 20));
+      // Sets default initial congestion window as 10 segments
       Config::SetDefault ("ns3::TcpSocket::InitialCwnd", UintegerValue (10));
+      // Sets default delayed ack count to a specified value
       Config::SetDefault ("ns3::TcpSocket::DelAckCount", UintegerValue (delAckCount));
+      // Sets default segment size of TCP packet to a specified value
       Config::SetDefault ("ns3::TcpSocket::SegmentSize", UintegerValue (dataSize));
+      // Enable/Disable SACK in TCP
       Config::SetDefault ("ns3::TcpSocketBase::Sack", BooleanValue (isSack));
     }
 
