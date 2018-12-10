@@ -8,7 +8,6 @@ set key outside;
 set key right top;
 plot "S10-ns3.plotme" title "S1-1" with lines lw 1.5
 
-set yrange [0:200]
 set terminal pngcairo enhanced color lw 2 size 800,600 font 'Arial-Bold'
 set output "CwndS1-2.png"
 set xlabel "Time (sec)" font "Verdana"
@@ -17,7 +16,6 @@ set key outside;
 set key right top;
 plot "S11-ns3.plotme" title "S1-2" with lines lw 1.5
 
-set yrange [0:200]
 set terminal pngcairo enhanced color lw 2 size 800,600 font 'Arial-Bold'
 set output "CwndS1-3.png"
 set xlabel "Time (sec)" font "Verdana"
@@ -26,7 +24,6 @@ set key outside;
 set key right top;
 plot "S12-ns3.plotme" title "S1-3" with lines lw 1.5
 
-set yrange [0:200]
 set terminal pngcairo enhanced color lw 2 size 800,600 font 'Arial-Bold'
 set output "CwndS1-4.png"
 set xlabel "Time (sec)" font "Verdana"
@@ -35,7 +32,6 @@ set key outside;
 set key right top;
 plot "S13-ns3.plotme" title "S1-4" with lines lw 1.5
 
-set yrange [0:200]
 set terminal pngcairo enhanced color lw 2 size 800,600 font 'Arial-Bold'
 set output "CwndS1-5.png"
 set xlabel "Time (sec)" font "Verdana"
@@ -44,7 +40,6 @@ set key outside;
 set key right top;
 plot "S14-ns3.plotme" title "S1-5" with lines lw 1.5
 
-set yrange [0:200]
 set terminal pngcairo enhanced color lw 2 size 800,600 font 'Arial-Bold'
 set output "CwndS1-6.png"
 set xlabel "Time (sec)" font "Verdana"
@@ -53,7 +48,6 @@ set key outside;
 set key right top;
 plot "S15-ns3.plotme" title "S1-6" with lines lw 1.5
 
-set yrange [0:200]
 set terminal pngcairo enhanced color lw 2 size 800,600 font 'Arial-Bold'
 set output "CwndS1-7.png"
 set xlabel "Time (sec)" font "Verdana"
@@ -62,7 +56,6 @@ set key outside;
 set key right top;
 plot "S16-ns3.plotme" title "S1-7" with lines lw 1.5
 
-set yrange [0:200]
 set terminal pngcairo enhanced color lw 2 size 800,600 font 'Arial-Bold'
 set output "CwndS1-8.png"
 set xlabel "Time (sec)" font "Verdana"
@@ -71,7 +64,6 @@ set key outside;
 set key right top;
 plot "S17-ns3.plotme" title "S1-8" with lines lw 1.5
 
-set yrange [0:200]
 set terminal pngcairo enhanced color lw 2 size 800,600 font 'Arial-Bold'
 set output "CwndS1-9.png"
 set xlabel "Time (sec)" font "Verdana"
@@ -80,7 +72,6 @@ set key outside;
 set key right top;
 plot "S18-ns3.plotme" title "S1-9" with lines lw 1.5
 
-set yrange [0:200]
 set terminal pngcairo enhanced color lw 2 size 800,600 font 'Arial-Bold'
 set output "CwndS1-10.png"
 set xlabel "Time (sec)" font "Verdana"
@@ -89,7 +80,6 @@ set key outside;
 set key right top;
 plot "S19-ns3.plotme" title "S1-10" with lines lw 1.5
 
-set yrange [0:200]
 set terminal pngcairo enhanced color lw 2 size 800,600 font 'Arial-Bold'
 set output "CwndS2-1.png"
 set xlabel "Time (sec)" font "Verdana"
@@ -98,7 +88,6 @@ set key outside;
 set key right top;
 plot "S20-ns3.plotme" title "S2-1" with lines lw 1.5
 
-set yrange [0:200]
 set terminal pngcairo enhanced color lw 2 size 800,600 font 'Arial-Bold'
 set output "CwndS2-2.png"
 set xlabel "Time (sec)" font "Verdana"
@@ -107,7 +96,6 @@ set key outside;
 set key right top;
 plot "S21-ns3.plotme" title "S2-2" with lines lw 1.5
 
-set yrange [0:200]
 set terminal pngcairo enhanced color lw 2 size 800,600 font 'Arial-Bold'
 set output "CwndS2-3.png"
 set xlabel "Time (sec)" font "Verdana"
@@ -116,7 +104,6 @@ set key outside;
 set key right top;
 plot "S22-ns3.plotme" title "S2-3" with lines lw 1.5
 
-set yrange [0:200]
 set terminal pngcairo enhanced color lw 2 size 800,600 font 'Arial-Bold'
 set output "CwndS2-4.png"
 set xlabel "Time (sec)" font "Verdana"
@@ -125,7 +112,6 @@ set key outside;
 set key right top;
 plot "S23-ns3.plotme" title "S2-4" with lines lw 1.5
 
-set yrange [0:200]
 set terminal pngcairo enhanced color lw 2 size 800,600 font 'Arial-Bold'
 set output "CwndS2-5.png"
 set xlabel "Time (sec)" font "Verdana"
@@ -134,7 +120,6 @@ set key outside;
 set key right top;
 plot "S24-ns3.plotme" title "S2-5" with lines lw 1.5
 
-set yrange [0:200]
 set terminal pngcairo enhanced color lw 2 size 800,600 font 'Arial-Bold'
 set output "CwndS2-6.png"
 set xlabel "Time (sec)" font "Verdana"
@@ -143,7 +128,6 @@ set key outside;
 set key right top;
 plot "S25-ns3.plotme" title "S2-6" with lines lw 1.5
 
-set yrange [0:200]
 set terminal pngcairo enhanced color lw 2 size 800,600 font 'Arial-Bold'
 set output "CwndS2-7.png"
 set xlabel "Time (sec)" font "Verdana"
@@ -152,7 +136,6 @@ set key outside;
 set key right top;
 plot "S26-ns3.plotme" title "S2-7" with lines lw 1.5
 
-set yrange [0:200]
 set terminal pngcairo enhanced color lw 2 size 800,600 font 'Arial-Bold'
 set output "CwndS2-8.png"
 set xlabel "Time (sec)" font "Verdana"
@@ -161,7 +144,6 @@ set key outside;
 set key right top;
 plot "S27-ns3.plotme" title "S2-8" with lines lw 1.5
 
-set yrange [0:200]
 set terminal pngcairo enhanced color lw 2 size 800,600 font 'Arial-Bold'
 set output "CwndS2-9.png"
 set xlabel "Time (sec)" font "Verdana"
@@ -170,7 +152,6 @@ set key outside;
 set key right top;
 plot "S28-ns3.plotme" title "S2-9" with lines lw 1.5
 
-set yrange [0:200]
 set terminal pngcairo enhanced color lw 2 size 800,600 font 'Arial-Bold'
 set output "CwndS2-10.png"
 set xlabel "Time (sec)" font "Verdana"
@@ -179,7 +160,6 @@ set key outside;
 set key right top;
 plot "S29-ns3.plotme" title "S2-10" with lines lw 1.5
 
-set yrange [0:200]
 set terminal pngcairo enhanced color lw 2 size 800,600 font 'Arial-Bold'
 set output "CwndS2-11.png"
 set xlabel "Time (sec)" font "Verdana"
@@ -188,7 +168,6 @@ set key outside;
 set key right top;
 plot "S210-ns3.plotme" title "S2-11" with lines lw 1.5
 
-set yrange [0:200]
 set terminal pngcairo enhanced color lw 2 size 800,600 font 'Arial-Bold'
 set output "CwndS2-12.png"
 set xlabel "Time (sec)" font "Verdana"
@@ -197,7 +176,6 @@ set key outside;
 set key right top;
 plot "S211-ns3.plotme" title "S2-12" with lines lw 1.5
 
-set yrange [0:200]
 set terminal pngcairo enhanced color lw 2 size 800,600 font 'Arial-Bold'
 set output "CwndS2-13.png"
 set xlabel "Time (sec)" font "Verdana"
@@ -206,7 +184,6 @@ set key outside;
 set key right top;
 plot "S212-ns3.plotme" title "S2-13" with lines lw 1.5
 
-set yrange [0:200]
 set terminal pngcairo enhanced color lw 2 size 800,600 font 'Arial-Bold'
 set output "CwndS2-14.png"
 set xlabel "Time (sec)" font "Verdana"
@@ -215,7 +192,6 @@ set key outside;
 set key right top;
 plot "S213-ns3.plotme" title "S2-14" with lines lw 1.5
 
-set yrange [0:200]
 set terminal pngcairo enhanced color lw 2 size 800,600 font 'Arial-Bold'
 set output "CwndS2-15.png"
 set xlabel "Time (sec)" font "Verdana"
@@ -224,7 +200,6 @@ set key outside;
 set key right top;
 plot "S214-ns3.plotme" title "S2-15" with lines lw 1.5
 
-set yrange [0:200]
 set terminal pngcairo enhanced color lw 2 size 800,600 font 'Arial-Bold'
 set output "CwndS2-16.png"
 set xlabel "Time (sec)" font "Verdana"
@@ -233,7 +208,6 @@ set key outside;
 set key right top;
 plot "S215-ns3.plotme" title "S2-16" with lines lw 1.5
 
-set yrange [0:200]
 set terminal pngcairo enhanced color lw 2 size 800,600 font 'Arial-Bold'
 set output "CwndS2-17.png"
 set xlabel "Time (sec)" font "Verdana"
@@ -242,7 +216,6 @@ set key outside;
 set key right top;
 plot "S216-ns3.plotme" title "S2-17" with lines lw 1.5
 
-set yrange [0:200]
 set terminal pngcairo enhanced color lw 2 size 800,600 font 'Arial-Bold'
 set output "CwndS2-18.png"
 set xlabel "Time (sec)" font "Verdana"
@@ -251,7 +224,6 @@ set key outside;
 set key right top;
 plot "S217-ns3.plotme" title "S2-18" with lines lw 1.5
 
-set yrange [0:200]
 set terminal pngcairo enhanced color lw 2 size 800,600 font 'Arial-Bold'
 set output "CwndS2-19.png"
 set xlabel "Time (sec)" font "Verdana"
@@ -260,7 +232,6 @@ set key outside;
 set key right top;
 plot "S218-ns3.plotme" title "S2-19" with lines lw 1.5
 
-set yrange [0:200]
 set terminal pngcairo enhanced color lw 2 size 800,600 font 'Arial-Bold'
 set output "CwndS2-20.png"
 set xlabel "Time (sec)" font "Verdana"
@@ -269,7 +240,6 @@ set key outside;
 set key right top;
 plot "S219-ns3.plotme" title "S2-20" with lines lw 1.5
 
-set yrange [0:200]
 set terminal pngcairo enhanced color lw 2 size 800,600 font 'Arial-Bold'
 set output "CwndS3-1.png"
 set xlabel "Time (sec)" font "Verdana"
@@ -278,7 +248,6 @@ set key outside;
 set key right top;
 plot "S30-ns3.plotme" title "S3-1" with lines lw 1.5
 
-set yrange [0:200]
 set terminal pngcairo enhanced color lw 2 size 800,600 font 'Arial-Bold'
 set output "CwndS3-2.png"
 set xlabel "Time (sec)" font "Verdana"
@@ -287,7 +256,6 @@ set key outside;
 set key right top;
 plot "S31-ns3.plotme" title "S3-2" with lines lw 1.5
 
-set yrange [0:200]
 set terminal pngcairo enhanced color lw 2 size 800,600 font 'Arial-Bold'
 set output "CwndS3-3.png"
 set xlabel "Time (sec)" font "Verdana"
@@ -296,7 +264,6 @@ set key outside;
 set key right top;
 plot "S32-ns3.plotme" title "S3-3" with lines lw 1.5
 
-set yrange [0:200]
 set terminal pngcairo enhanced color lw 2 size 800,600 font 'Arial-Bold'
 set output "CwndS3-4.png"
 set xlabel "Time (sec)" font "Verdana"
@@ -305,7 +272,6 @@ set key outside;
 set key right top;
 plot "S33-ns3.plotme" title "S3-4" with lines lw 1.5
 
-set yrange [0:200]
 set terminal pngcairo enhanced color lw 2 size 800,600 font 'Arial-Bold'
 set output "CwndS3-5.png"
 set xlabel "Time (sec)" font "Verdana"
@@ -314,7 +280,6 @@ set key outside;
 set key right top;
 plot "S34-ns3.plotme" title "S3-5" with lines lw 1.5
 
-set yrange [0:200]
 set terminal pngcairo enhanced color lw 2 size 800,600 font 'Arial-Bold'
 set output "CwndS3-6.png"
 set xlabel "Time (sec)" font "Verdana"
@@ -323,7 +288,6 @@ set key outside;
 set key right top;
 plot "S35-ns3.plotme" title "S3-6" with lines lw 1.5
 
-set yrange [0:200]
 set terminal pngcairo enhanced color lw 2 size 800,600 font 'Arial-Bold'
 set output "CwndS3-7.png"
 set xlabel "Time (sec)" font "Verdana"
@@ -332,7 +296,6 @@ set key outside;
 set key right top;
 plot "S36-ns3.plotme" title "S3-7" with lines lw 1.5
 
-set yrange [0:200]
 set terminal pngcairo enhanced color lw 2 size 800,600 font 'Arial-Bold'
 set output "CwndS3-8.png"
 set xlabel "Time (sec)" font "Verdana"
@@ -341,7 +304,6 @@ set key outside;
 set key right top;
 plot "S37-ns3.plotme" title "S3-8" with lines lw 1.5
 
-set yrange [0:200]
 set terminal pngcairo enhanced color lw 2 size 800,600 font 'Arial-Bold'
 set output "CwndS3-9.png"
 set xlabel "Time (sec)" font "Verdana"
@@ -350,7 +312,6 @@ set key outside;
 set key right top;
 plot "S38-ns3.plotme" title "S3-9" with lines lw 1.5
 
-set yrange [0:200]
 set terminal pngcairo enhanced color lw 2 size 800,600 font 'Arial-Bold'
 set output "CwndS3-10.png"
 set xlabel "Time (sec)" font "Verdana"

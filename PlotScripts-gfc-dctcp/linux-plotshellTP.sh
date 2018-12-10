@@ -209,5 +209,45 @@ mv cwnd_data $directory
 cd $directory/pcap/
 cp linux-gnuplotscriptCwnd ../cwnd_data/
 cd ../cwnd_data/
+awk  '{$1 = $1-10}1' OFS=' ' S10-linux.plotme  > S10-linux_1.plotme
+awk  '{$1 = $1-10}1' OFS=' ' S11-linux.plotme  > S11-linux_1.plotme
+awk  '{$1 = $1-10}1' OFS=' ' S12-linux.plotme  > S12-linux_1.plotme
+awk  '{$1 = $1-10}1' OFS=' ' S13-linux.plotme  > S13-linux_1.plotme
+awk  '{$1 = $1-10}1' OFS=' ' S14-linux.plotme  > S14-linux_1.plotme
+awk  '{$1 = $1-10}1' OFS=' ' S15-linux.plotme  > S15-linux_1.plotme
+awk  '{$1 = $1-10}1' OFS=' ' S16-linux.plotme  > S16-linux_1.plotme
+awk  '{$1 = $1-10}1' OFS=' ' S17-linux.plotme  > S17-linux_1.plotme
+awk  '{$1 = $1-10}1' OFS=' ' S18-linux.plotme  > S18-linux_1.plotme
+awk  '{$1 = $1-10}1' OFS=' ' S19-linux.plotme  > S19-linux_1.plotme
+awk  '{$1 = $1-10}1' OFS=' ' S30-linux.plotme  > S30-linux_1.plotme
+awk  '{$1 = $1-10}1' OFS=' ' S31-linux.plotme  > S31-linux_1.plotme
+awk  '{$1 = $1-10}1' OFS=' ' S32-linux.plotme  > S32-linux_1.plotme
+awk  '{$1 = $1-10}1' OFS=' ' S33-linux.plotme  > S33-linux_1.plotme
+awk  '{$1 = $1-10}1' OFS=' ' S34-linux.plotme  > S34-linux_1.plotme
+awk  '{$1 = $1-10}1' OFS=' ' S35-linux.plotme  > S35-linux_1.plotme
+awk  '{$1 = $1-10}1' OFS=' ' S36-linux.plotme  > S36-linux_1.plotme
+awk  '{$1 = $1-10}1' OFS=' ' S37-linux.plotme  > S37-linux_1.plotme
+awk  '{$1 = $1-10}1' OFS=' ' S38-linux.plotme  > S38-linux_1.plotme
+awk  '{$1 = $1-10}1' OFS=' ' S39-linux.plotme  > S39-linux_1.plotme
+awk  '{$1 = $1-10}1' OFS=' ' S20-linux.plotme  > S20-linux_1.plotme
+awk  '{$1 = $1-10}1' OFS=' ' S21-linux.plotme  > S21-linux_1.plotme
+awk  '{$1 = $1-10}1' OFS=' ' S22-linux.plotme  > S22-linux_1.plotme
+awk  '{$1 = $1-10}1' OFS=' ' S23-linux.plotme  > S23-linux_1.plotme
+awk  '{$1 = $1-10}1' OFS=' ' S24-linux.plotme  > S24-linux_1.plotme
+awk  '{$1 = $1-10}1' OFS=' ' S25-linux.plotme  > S25-linux_1.plotme
+awk  '{$1 = $1-10}1' OFS=' ' S26-linux.plotme  > S26-linux_1.plotme
+awk  '{$1 = $1-10}1' OFS=' ' S27-linux.plotme  > S27-linux_1.plotme
+awk  '{$1 = $1-10}1' OFS=' ' S28-linux.plotme  > S28-linux_1.plotme
+awk  '{$1 = $1-10}1' OFS=' ' S29-linux.plotme  > S29-linux_1.plotme
+awk  '{$1 = $1-10}1' OFS=' ' S210-linux.plotme  > S210-linux_1.plotme
+awk  '{$1 = $1-10}1' OFS=' ' S211-linux.plotme  > S211-linux_1.plotme
+awk  '{$1 = $1-10}1' OFS=' ' S212-linux.plotme  > S212-linux_1.plotme
+awk  '{$1 = $1-10}1' OFS=' ' S213-linux.plotme  > S213-linux_1.plotme
+awk  '{$1 = $1-10}1' OFS=' ' S214-linux.plotme  > S214-linux_1.plotme
+awk  '{$1 = $1-10}1' OFS=' ' S215-linux.plotme  > S215-linux_1.plotme
+awk  '{$1 = $1-10}1' OFS=' ' S216-linux.plotme  > S216-linux_1.plotme
+awk  '{$1 = $1-10}1' OFS=' ' S217-linux.plotme  > S217-linux_1.plotme
+awk  '{$1 = $1-10}1' OFS=' ' S218-linux.plotme  > S218-linux_1.plotme
+awk  '{$1 = $1-10}1' OFS=' ' S219-linux.plotme  > S219-linux_1.plotme
 gnuplot linux-gnuplotscriptCwnd
 cp *.png ../Graphs/
