@@ -55,17 +55,48 @@ for i in sender_node_id:
         cwnd = info.split("cwnd:")[1].split()[0]
         if port_found:
           if (i >= 3 and i <= 12):
-            with open("../results/gfc-dctcp/cwnd_data/S1"+ str(i-3) + "-linux.plotme", write_mode) as out_file:
+            with open("../results/gfc-dctcp/cwnd_data/S1"+ str(i-3) + "-linux.txt", write_mode) as out_file:
               out_file.write(str(time_format) + " " + str(cwnd) + "\n")
             write_mode = 'a'
             port_found = 0
           elif (i >= 13 and i <= 32):
-            with open("../results/gfc-dctcp/cwnd_data/S2"+ str(i-13) + "-linux.plotme", write_mode) as out_file:
+            with open("../results/gfc-dctcp/cwnd_data/S2"+ str(i-13) + "-linux.txt", write_mode) as out_file:
               out_file.write(str(time_format) + " " + str(cwnd) + "\n")
             write_mode = 'a'
             port_found = 0
           elif (i >= 33 and i <= 42):
-            with open("../results/gfc-dctcp/cwnd_data/S3"+ str(i-33) + "-linux.plotme", write_mode) as out_file:
+            with open("../results/gfc-dctcp/cwnd_data/S3"+ str(i-33) + "-linux.txt", write_mode) as out_file:
               out_file.write(str(time_format) + " " + str(cwnd) + "\n")
             write_mode = 'a'
             port_found = 0
+
+  if (i >= 3 and i <= 12):
+    f = open("../results/gfc-dctcp/cwnd_data/S1"+ str(i-3) + "-linux.txt", 'r')
+  elif (i >= 13 and i <= 32):
+    f = open("../results/gfc-dctcp/cwnd_data/S2"+ str(i-13) + "-linux.txt", 'r')
+  elif (i >= 33 and i <= 42):
+    f = open("../results/gfc-dctcp/cwnd_data/S3"+ str(i-33) + "-linux.txt", 'r')
+  data = f.readlines()
+  arr=[]
+  for lines in data:
+    line=lines.split(" ")
+    arr1=[];
+    arr1.append(float(line[0]))
+    arr1.append(line[1])
+    arr.append(arr1)
+  arr2=sorted(arr, key=lambda x: x[0])
+  if (i >= 3 and i <= 12):
+    f = open("../results/gfc-dctcp/cwnd_data/S1"+ str(i-3) + "-linux.plotme", 'w')
+  elif (i >= 13 and i <= 32):
+    f = open("../results/gfc-dctcp/cwnd_data/S2"+ str(i-13) + "-linux.plotme", 'w')
+  elif (i >= 33 and i <= 42):
+    f = open("../results/gfc-dctcp/cwnd_data/S3"+ str(i-33) + "-linux.plotme", 'w')
+  for line in arr2:
+    f.write(str(line[0])+" "+str(line[1]))
+  f.close()
+  if (i >= 3 and i <= 12):
+    os.remove("../results/gfc-dctcp/cwnd_data/S1"+ str(i-3) + "-linux.txt")
+  elif (i >= 13 and i <= 32):
+    os.remove("../results/gfc-dctcp/cwnd_data/S2"+ str(i-13) + "-linux.txt")
+  elif (i >= 33 and i <= 42):
+    os.remove("../results/gfc-dctcp/cwnd_data/S3"+ str(i-33) + "-linux.txt")
