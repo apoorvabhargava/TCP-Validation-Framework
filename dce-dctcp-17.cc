@@ -417,11 +417,11 @@ int main (int argc, char *argv[])
       linuxStack.SysctlSet (R1, ".net.ipv4.conf.default.forwarding", "1");
       linuxStack.SysctlSet (R2, ".net.ipv4.conf.default.forwarding", "1");
       // Set TCP congestion control algorithm in linux stack of all senders and receivers
-      linuxStack.SysctlSet (S1, ".net.ipv4.tcp_congestion_control", transport_prot);
-      linuxStack.SysctlSet (S2, ".net.ipv4.tcp_congestion_control", transport_prot);
-      linuxStack.SysctlSet (S3, ".net.ipv4.tcp_congestion_control", transport_prot);
-      linuxStack.SysctlSet (R1, ".net.ipv4.tcp_congestion_control", transport_prot);
-      linuxStack.SysctlSet (R2, ".net.ipv4.tcp_congestion_control", transport_prot);
+      linuxStack.SysctlSet (S1, ".net.ipv4.tcp_congestion_control", linux_prot);
+      linuxStack.SysctlSet (S2, ".net.ipv4.tcp_congestion_control", linux_prot);
+      linuxStack.SysctlSet (S3, ".net.ipv4.tcp_congestion_control", linux_prot);
+      linuxStack.SysctlSet (R1, ".net.ipv4.tcp_congestion_control", linux_prot);
+      linuxStack.SysctlSet (R2, ".net.ipv4.tcp_congestion_control", linux_prot);
       // Eanble ECN in linux stack of all senders and receivers
       linuxStack.SysctlSet (S1, ".net.ipv4.tcp_ecn", "1");
       linuxStack.SysctlSet (S2, ".net.ipv4.tcp_ecn", "1");
